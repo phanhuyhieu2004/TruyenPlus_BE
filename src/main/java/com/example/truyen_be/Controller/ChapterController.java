@@ -36,6 +36,15 @@ public class ChapterController {
 
         return new ResponseEntity<>(chapters, HttpStatus.OK);
     }
+    @GetMapping("/stories/{storyId}")
+    public ResponseEntity<Iterable<Chapter>> getAllChap(@PathVariable Long storyId) {
+        Iterable<Chapter> chapters = iChapterRepository.findAll(storyId);
+        if (chapters == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<>(chapters, HttpStatus.OK);
+    }
     @DeleteMapping("/{id}")
     public ResponseEntity<Chapter> deleteChapter(@PathVariable Long id) {
         Optional<Chapter> chapterOptional = chapTerService.findById(id);
