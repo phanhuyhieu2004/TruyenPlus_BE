@@ -30,6 +30,11 @@ public class StoryController {
         Iterable<Story> stories = iStoryRepository.findByCreatedAtOrderBy();
         return new ResponseEntity<>(stories, HttpStatus.OK);
     }
+    @GetMapping("/full")
+    public ResponseEntity<Iterable<Story>> getAll() {
+        Iterable<Story> stories = iStoryRepository.findByCreatedAtOrderByFull();
+        return new ResponseEntity<>(stories, HttpStatus.OK);
+    }
 
     @GetMapping("/status")
     public ResponseEntity<Iterable<Story>> getStories() {
