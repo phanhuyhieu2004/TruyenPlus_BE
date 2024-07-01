@@ -46,7 +46,14 @@ public class StoryController {
     @GetMapping("/{id}")
     public ResponseEntity<Story> getStoryById(@PathVariable Long id) {
         Optional<Story> story = storyService.findById(id);
-        return new ResponseEntity<>(story.get(), HttpStatus.OK);
+        if(!story.isPresent()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        Story storyView=story.get();
+
+        storyView.setView(storyView.getView()+1);
+        storyService.save(storyView);
+        return new ResponseEntity<>(storyView, HttpStatus.OK);
 
     }
 
