@@ -1,4 +1,4 @@
-package com.example.truyen_be.Model;
+package com.example.truyen_be.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -51,11 +51,13 @@ public class Story {
     private Set<Category> categories = new HashSet<>();
 @Value("0")
     private int totalChapters;
+
+private int view;
     public Story() {
 
     }
 
-    public Story(Long storyId, String title, String image, String description, String author, LocalDateTime createdAt, LocalDateTime updatedAt, String status, Set<Category> categories, int totalChapters) {
+    public Story(Long storyId, String title, String image, String description, String author, LocalDateTime createdAt, LocalDateTime updatedAt, String status, Set<Category> categories, int totalChapters, int view) {
         this.storyId = storyId;
         this.title = title;
         this.image = image;
@@ -66,5 +68,6 @@ public class Story {
         this.status = status;
         this.categories = categories;
         this.totalChapters = totalChapters;
+        this.view = view;
     }
 }

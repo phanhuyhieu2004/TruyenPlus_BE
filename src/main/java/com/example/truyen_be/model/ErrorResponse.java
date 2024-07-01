@@ -1,4 +1,4 @@
-package com.example.truyen_be.Model;
+package com.example.truyen_be.model;
 
 public class ErrorResponse {
     private String message;

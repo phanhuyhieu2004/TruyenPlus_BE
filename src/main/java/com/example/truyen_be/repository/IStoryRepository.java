@@ -1,17 +1,14 @@
-package com.example.truyen_be.Repository;
+package com.example.truyen_be.repository;
 
 
-import com.example.truyen_be.Model.Story;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
+import com.example.truyen_be.model.Story;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.PagingAndSortingRepository;
+
 import org.springframework.stereotype.Repository;
 
-import java.awt.print.Pageable;
-import java.util.Optional;
+
 
 @Repository
 public interface IStoryRepository  extends JpaRepository<Story, Long> {

@@ -1,13 +1,15 @@
-package com.example.truyen_be.Controller;
+package com.example.truyen_be.controller;
 
 
-import com.example.truyen_be.Dto.ChapDTO;
-import com.example.truyen_be.Model.Chapter;
-import com.example.truyen_be.Model.ErrorResponse;
-import com.example.truyen_be.Model.Story;
-import com.example.truyen_be.Repository.IChapterRepository;
-import com.example.truyen_be.Repository.IStoryRepository;
-import com.example.truyen_be.Service.imp.ChapTerService;
+
+import com.example.truyen_be.dto.ChapDTO;
+
+import com.example.truyen_be.model.Chapter;
+import com.example.truyen_be.model.ErrorResponse;
+import com.example.truyen_be.model.Story;
+import com.example.truyen_be.repository.IChapterRepository;
+import com.example.truyen_be.repository.IStoryRepository;
+import com.example.truyen_be.service.imp.ChapTerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.HttpStatus;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.Optional;
+
 
 @RestController
 @RequestMapping("/api/chapters")

@@ -1,4 +1,4 @@
-package com.example.truyen_be.Model;
+package com.example.truyen_be.model;
 
 import jakarta.persistence.*;
 import lombok.Data;

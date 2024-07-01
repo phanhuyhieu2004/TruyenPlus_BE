@@ -1,10 +1,11 @@
-package com.example.truyen_be.Service.imp;
+package com.example.truyen_be.service.imp;
 
 
 
-import com.example.truyen_be.Model.Category;
-import com.example.truyen_be.Repository.ICategoryRepository;
-import com.example.truyen_be.Service.ICategoryService;
+
+import com.example.truyen_be.model.Category;
+import com.example.truyen_be.repository.ICategoryRepository;
+import com.example.truyen_be.service.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

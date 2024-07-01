@@ -1,7 +1,7 @@
-package com.example.truyen_be.Repository;
+package com.example.truyen_be.repository;
 
 
-import com.example.truyen_be.Model.Chapter;
+import com.example.truyen_be.model.Chapter;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

@@ -1,9 +1,9 @@
-package com.example.truyen_be.Repository;
+package com.example.truyen_be.repository;
 
 
-import com.example.truyen_be.Model.Category;
+
+import com.example.truyen_be.model.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 

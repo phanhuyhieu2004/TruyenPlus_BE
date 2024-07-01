@@ -1,13 +1,11 @@
-package com.example.truyen_be.Dto;
+package com.example.truyen_be.dto;
 
 
-import com.example.truyen_be.Model.Category;
-import jakarta.persistence.*;
+
+import com.example.truyen_be.model.Category;
+
 import lombok.Data;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 

@@ -1,21 +1,21 @@
-package com.example.truyen_be.Service.imp;
+package com.example.truyen_be.service.imp;
 
 
 
 
-import com.example.truyen_be.Dto.ChapDTO;
-import com.example.truyen_be.Model.Chapter;
-import com.example.truyen_be.Model.Story;
-import com.example.truyen_be.Repository.IChapterRepository;
-import com.example.truyen_be.Repository.IStoryRepository;
-import com.example.truyen_be.Service.IChapterService;
+import com.example.truyen_be.dto.ChapDTO;
+import com.example.truyen_be.model.Chapter;
+import com.example.truyen_be.model.Story;
+import com.example.truyen_be.repository.IChapterRepository;
+import com.example.truyen_be.repository.IStoryRepository;
+import com.example.truyen_be.service.IChapterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 
 import org.springframework.stereotype.Service;
 
 
-import java.io.File;
+
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.Optional;

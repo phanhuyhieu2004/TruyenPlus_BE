@@ -1,8 +1,9 @@
-package com.example.truyen_be.Controller;
+package com.example.truyen_be.controller;
 
 
-import com.example.truyen_be.Model.Category;
-import com.example.truyen_be.Service.imp.CategoryService;
+
+import com.example.truyen_be.model.Category;
+import com.example.truyen_be.service.imp.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
