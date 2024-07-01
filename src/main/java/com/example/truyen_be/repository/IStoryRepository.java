@@ -21,4 +21,6 @@ public interface IStoryRepository  extends JpaRepository<Story, Long> {
     @Query(value = "SELECT COUNT(*) FROM storys WHERE story_id = :storyId AND total_chapters > 0", nativeQuery = true)
     int countStoriesWithChapters( Long storyId);
     boolean existsByTitle(String title);
+    @Query(value = "SELECT * FROM storys ORDER BY view DESC LIMIT 10",nativeQuery = true)
+    public Iterable<Story>findByView();
 }

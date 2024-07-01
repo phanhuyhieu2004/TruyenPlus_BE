@@ -30,6 +30,12 @@ public class StoryController {
         return new ResponseEntity<>(stories, HttpStatus.OK);
     }
 
+    @GetMapping("/view")
+    public ResponseEntity<Iterable<Story>> getAllView() {
+        Iterable<Story> stories = iStoryRepository.findByView();
+        return new ResponseEntity<>(stories, HttpStatus.OK);
+    }
+
     @GetMapping("/full")
     public ResponseEntity<Iterable<Story>> getAll() {
         Iterable<Story> stories = iStoryRepository.findByCreatedAtOrderByFull();
@@ -46,12 +52,12 @@ public class StoryController {
     @GetMapping("/{id}")
     public ResponseEntity<Story> getStoryById(@PathVariable Long id) {
         Optional<Story> story = storyService.findById(id);
-        if(!story.isPresent()){
+        if (!story.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        Story storyView=story.get();
+        Story storyView = story.get();
 
-        storyView.setView(storyView.getView()+1);
+        storyView.setView(storyView.getView() + 1);
         storyService.save(storyView);
         return new ResponseEntity<>(storyView, HttpStatus.OK);
 
@@ -97,13 +103,5 @@ public class StoryController {
         return ResponseEntity.ok(hasChapters);
     }
 
-    @GetMapping("/{storyId}/view")
-    public ResponseEntity<Story> updateViews(@PathVariable Long storyId) {
-        Optional<Story> updateStory = storyService.findById(storyId);
 
-        Story story = updateStory.get();
-        story.setView(story.getView() + 1);
-        storyService.save(story);
-        return new ResponseEntity<>(story, HttpStatus.OK);
-    }
 }
