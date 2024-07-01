@@ -23,4 +23,5 @@ public interface IStoryRepository  extends JpaRepository<Story, Long> {
     boolean existsByTitle(String title);
     @Query(value = "SELECT * FROM storys ORDER BY view DESC LIMIT 10",nativeQuery = true)
     public Iterable<Story>findByView();
+
 }
