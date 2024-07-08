@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-
 @Repository
 public interface IStoryRepository  extends JpaRepository<Story, Long> {
     @Query(value = "SELECT * FROM storys ORDER BY created_at DESC LIMIT 18", nativeQuery = true)
