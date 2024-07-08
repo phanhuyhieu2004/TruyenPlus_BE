@@ -28,6 +28,8 @@ public interface IStoryRepository  extends JpaRepository<Story, Long> {
 @Query(value = "select s.* from storys s join story_category sc on s.story_id=sc.story_id\n" +
         "join categorys c on c.category_id=sc.category_id where c.category_name= :categoryName",nativeQuery = true)
 public Iterable<Story> findByCategoryName(@RequestParam("categoryName") String categoryName);
+    @Query("SELECT s FROM Story s " +
+            "WHERE s.author LIKE %:author% ")
 public Iterable<Story>findStoriesByAuthor(@RequestParam  String author);
     @Query("SELECT s FROM Story s " +
             "WHERE s.title LIKE %:searchTerm% OR s.author LIKE %:searchTerm%")
