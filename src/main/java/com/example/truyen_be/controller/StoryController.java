@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -33,6 +34,32 @@ public class StoryController {
     @GetMapping("/view")
     public ResponseEntity<Iterable<Story>> getAllView() {
         Iterable<Story> stories = iStoryRepository.findByView();
+        return new ResponseEntity<>(stories, HttpStatus.OK);
+    }
+
+    @GetMapping("/category")
+    public ResponseEntity<Iterable<Story>> getStoriesByCategory(@RequestParam String categoryName) {
+        Iterable<Story> stories = iStoryRepository.findByCategoryName(categoryName);
+        return new ResponseEntity<>(stories, HttpStatus.OK);
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<Iterable<Story>> searchStories(@RequestParam(required = false) String searchTerm
+    ) {
+        Iterable<Story> stories = iStoryRepository.findByTitleOrAuthorContaining(searchTerm);
+        return new ResponseEntity<>(stories, HttpStatus.OK);
+    }
+
+    @GetMapping("/searches")
+    public Iterable<Story> searchStories(@RequestParam(required = false) String title,
+                                         @RequestParam(required = false) String author,
+                                         @RequestParam(required = false) List<Long> categories) {
+        return iStoryRepository.findByCriteria(title, author, categories);
+    }
+
+    @GetMapping("/author")
+    public ResponseEntity<Iterable<Story>> getStoriesByAuthor(@RequestParam String author) {
+        Iterable<Story> stories = iStoryRepository.findStoriesByAuthor(author);
         return new ResponseEntity<>(stories, HttpStatus.OK);
     }
 
