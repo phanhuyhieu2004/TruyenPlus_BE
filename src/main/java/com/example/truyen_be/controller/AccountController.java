@@ -23,7 +23,7 @@ public class AccountController {
         if (success) {
             return ResponseEntity.ok("OK");
         } else {
-            return ResponseEntity.status(401).body("Thông tin đăng nhập không chính xác");
+            return ResponseEntity.status(401).body("Thông tin đăng nhập không đúng");
         }
     }
 }
