@@ -24,10 +24,27 @@ public class StoryController {
     private StoryService storyService;
     @Autowired
     private IStoryRepository iStoryRepository;
-
+    @PostMapping("/{storyId}/like")
+    public ResponseEntity<String> toggleLike(
+            @PathVariable Long storyId,
+            @RequestParam Long accountId,
+            @RequestParam(defaultValue = "false") boolean checkOnly) {
+        String message = storyService.toggleLike(storyId, accountId, checkOnly);
+        return ResponseEntity.ok(message);
+    }
     @GetMapping("")
-    public ResponseEntity<Iterable<Story>> getAllStories() {
+    public ResponseEntity<Iterable<Story>> getAllLikes() {
+        Iterable<Story> stories = iStoryRepository.findByLikes();
+        return new ResponseEntity<>(stories, HttpStatus.OK);
+    }
+    @GetMapping("/new")
+    public ResponseEntity<Iterable<Story>> getAllNew() {
         Iterable<Story> stories = iStoryRepository.findByCreatedAtOrderBy();
+        return new ResponseEntity<>(stories, HttpStatus.OK);
+    }
+    @GetMapping("/stories-chap")
+    public ResponseEntity<Iterable<Story>> getAllStoriesChap() {
+        Iterable<Story> stories = iStoryRepository.findAll();
         return new ResponseEntity<>(stories, HttpStatus.OK);
     }
 

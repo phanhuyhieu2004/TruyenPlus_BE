@@ -28,5 +28,4 @@ public class StoryDTO {
 
 
   private Set<Category> categories = new HashSet<>();
-
 }

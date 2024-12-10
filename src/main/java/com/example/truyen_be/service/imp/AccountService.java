@@ -6,6 +6,7 @@ import com.example.truyen_be.service.IAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Service
@@ -20,7 +21,7 @@ public class AccountService implements IAccountService {
 
     @Override
     public Optional<Account> findById(Long id) {
-        return Optional.empty();
+        return iAccountRepository.findById(id);
     }
 
     @Override
@@ -32,8 +33,30 @@ public class AccountService implements IAccountService {
     public void remove(Long id) {
 
     }
-    public boolean login(String name, String password) {
+    public Account login(String name, String pass) {
+
         Account account = iAccountRepository.findByName(name);
-        return account != null && account.getPassword().equals(password);
+        if (account == null) {
+            throw new RuntimeException("Không có tài khoản");
+        }
+        if (!account.getPassword().equals(pass)) {
+            throw new RuntimeException("Sai mat khau");
+        }
+        return account;
+    }
+
+    //    xử lý nghiệp vụ của chức năng đăng ký bằng cách tên ,mật khẩu
+    public Account register(String name, String pass) {
+        if (iAccountRepository.findByName(name) != null) {
+            throw new RuntimeException("Tài khoản đã tồn tại");
+        }
+
+        Account accounts = new Account();
+        accounts.setName(name);
+        accounts.setPassword(pass);
+        accounts.setCreatedAt(LocalDateTime.now());
+
+        accounts.setRole(1);
+        return iAccountRepository.save(accounts);
     }
 }

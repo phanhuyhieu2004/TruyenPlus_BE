@@ -39,9 +39,9 @@ public class ChapterController {
 
         return new ResponseEntity<>(chapters, HttpStatus.OK);
     }
-    @GetMapping("/stories/{storyId}")
-    public ResponseEntity<Iterable<Chapter>> getAllChap(@PathVariable Long storyId) {
-        Iterable<Chapter> chapters = iChapterRepository.findAll(storyId);
+    @GetMapping("")
+    public ResponseEntity<Iterable<Chapter>> getAllChap() {
+        Iterable<Chapter> chapters = iChapterRepository.findAll();
         if (chapters == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

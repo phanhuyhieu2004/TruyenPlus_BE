@@ -13,8 +13,10 @@ import java.util.List;
 
 @Repository
 public interface IStoryRepository  extends JpaRepository<Story, Long> {
-    @Query(value = "SELECT * FROM storys ORDER BY created_at DESC LIMIT 18", nativeQuery = true)
+    @Query(value = "SELECT * FROM storys ORDER BY created_at DESC ", nativeQuery = true)
     public Iterable<Story>findByCreatedAtOrderBy();
+    @Query(value = "SELECT * FROM storys ORDER BY likes DESC", nativeQuery = true)
+    public Iterable<Story>findByLikes();
     @Query(value = "SELECT * FROM storys ORDER BY created_at DESC ", nativeQuery = true)
     public Iterable<Story>findByCreatedAtOrderByFull();
     @Query(value = "SELECT * FROM storys WHERE status=\"Full\"", nativeQuery = true)
@@ -22,7 +24,7 @@ public interface IStoryRepository  extends JpaRepository<Story, Long> {
     @Query(value = "SELECT COUNT(*) FROM storys WHERE story_id = :storyId AND total_chapters > 0", nativeQuery = true)
     int countStoriesWithChapters( Long storyId);
     boolean existsByTitle(String title);
-    @Query(value = "SELECT * FROM storys ORDER BY view DESC LIMIT 10",nativeQuery = true)
+    @Query(value = "SELECT * FROM storys ORDER BY view DESC",nativeQuery = true)
     public Iterable<Story>findByView();
 @Query(value = "select s.* from storys s join story_category sc on s.story_id=sc.story_id\n" +
         "join categorys c on c.category_id=sc.category_id where c.category_name= :categoryName",nativeQuery = true)

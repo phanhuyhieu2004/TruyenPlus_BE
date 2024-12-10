@@ -9,6 +9,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
+
 @Data
 @Entity
 @Table(name = "storys")
@@ -49,15 +50,19 @@ public class Story {
             inverseJoinColumns = @JoinColumn(name = "category_id")
     )
     private Set<Category> categories = new HashSet<>();
-@Value("0")
+
+
+
     private int totalChapters;
 
-private int view;
+    private int view;
+    private int likes;
+
     public Story() {
 
     }
 
-    public Story(Long storyId, String title, String image, String description, String author, LocalDateTime createdAt, LocalDateTime updatedAt, String status, Set<Category> categories, int totalChapters, int view) {
+    public Story(Long storyId, String title, String image, String description, String author, LocalDateTime createdAt, LocalDateTime updatedAt, String status, Set<Category> categories, int totalChapters, int view, int likes) {
         this.storyId = storyId;
         this.title = title;
         this.image = image;
@@ -69,5 +74,6 @@ private int view;
         this.categories = categories;
         this.totalChapters = totalChapters;
         this.view = view;
+        this.likes = likes;
     }
 }
